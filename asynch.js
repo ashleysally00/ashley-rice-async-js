@@ -1,15 +1,17 @@
 //button onclick
 
-document.addEventListener("DOMContentLoaded", function () {
-  let button = document.getElementById("button");
-  if (button) {
-    addEventListener("click", function () {
-      alert("you clicked the button!");
-    });
-  } else {
-    console.error("button not found");
-  }
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   let button = document.getElementById("button");
+//   if (button) {
+//     addEventListener("click", function () {
+//       alert("you clicked the button!");
+//     });
+//   } else {
+//     console.error("button not found");
+//   }
+// });
+
+//say Hi
 
 doOperation();
 
@@ -31,11 +33,53 @@ const place = "CA";
 const phrase = `This is ${place}`;
 console.log(phrase);
 
-//example using function is also synchronous
+//synchronous code example from MDN using function
 
-function sayGreeting(name) {
-  return `Hi, my name is ${name}`;
+function sayGreeting(nombre) {
+  return `Hi, my name is ${nombre}`;
 }
+
+const nombre = "Duncan";
+const phraseA = sayGreeting(nombre);
+console.log(phraseA);
+
+//synchronous function that takes a long time, MDN
+const MAX_PRIME = 100000;
+function isPrime(n) {
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return n > 1;
+}
+
+const random = (max) => Math.floor(Math.random() * max);
+
+function generatePrimes(quota) {
+  const primes = [];
+  while (primes.length < quota) {
+    const candidate = random(MAX_PRIME);
+    if (isPrime(candidate)) {
+      primes.push(candidate);
+    }
+  }
+  return primes;
+}
+
+const quota = document.querySelector("#quota");
+const output = document.querySelector("#output");
+
+document.querySelector("#generate").addEventListener("click", () => {
+  const primes = generatePrimes(quota.value);
+  output.textContent = `Finished generating  ${quota.value} primes!`;
+});
+
+document.querySelector("#reload").addEventListener("click", () => {
+  document.location.reload();
+});
+
+//same as previous but with text box
 
 //callbacks from MDN
 
