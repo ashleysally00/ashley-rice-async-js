@@ -21,6 +21,22 @@ setTimeout(() => {
 }, 3000);
 console.log("and then");
 
+//synchronous code example from MDN
+
+const name = "Sally";
+const greeting = `Hi, my name is ${name}`;
+console.log(greeting);
+
+const place = "CA";
+const phrase = `This is ${place}`;
+console.log(phrase);
+
+//example using function is also synchronous
+
+function sayGreeting(name) {
+  return `Hi, my name is ${name}`;
+}
+
 //callbacks from MDN
 
 function doStep1(init) {
