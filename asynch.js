@@ -1,15 +1,15 @@
-//button onclick
+// //button onclick
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   let button = document.getElementById("button");
-//   if (button) {
-//     addEventListener("click", function () {
-//       alert("you clicked the button!");
-//     });
-//   } else {
-//     console.error("button not found");
-//   }
-// });
+document.addEventListener("DOMContentLoaded", function () {
+  let button = document.getElementById("button");
+  if (button) {
+    addEventListener("click", function () {
+      alert("you clicked the button!");
+    });
+  } else {
+    console.error("button not found");
+  }
+});
 
 //say Hi
 
@@ -23,7 +23,7 @@ setTimeout(() => {
 }, 3000);
 console.log("and then");
 
-//synchronous code example from MDN
+// //synchronous code example from MDN
 
 const name = "Sally";
 const greeting = `Hi, my name is ${name}`;
@@ -43,7 +43,7 @@ const nombre = "Duncan";
 const phraseA = sayGreeting(nombre);
 console.log(phraseA);
 
-//synchronous function that takes a long time, MDN
+// //synchronous function that takes a long time, MDN
 const MAX_PRIME = 100000;
 function isPrime(n) {
   for (let i = 2; i <= Math.sqrt(n); i++) {
@@ -79,8 +79,31 @@ document.querySelector("#reload").addEventListener("click", () => {
   document.location.reload();
 });
 
-//same as previous but with text box
+//event handlers MDN: I couldn't get this one to work right even after commenting out the rest of js file and parts of html that might be blocking; will come back to it later
 
+const log = document.querySelector(".event-log");
+
+document.querySelector("#xhr").addEventListener("click", () => {
+  log.textContent = "";
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener("loadend", () => {
+    log.textContent = `${log.textContent}Finished with status: ${xhr.status}`;
+  });
+
+  xhr.open(
+    "GET",
+    "https://raw.githubusercontent.com/mdn/content/main/files/en-us/_wikihistory.json"
+  );
+  xhr.send();
+  log.textContent = `${log.textContent}Started XHR request\n`;
+});
+
+document.querySelector("#reload").addEventListener("click", () => {
+  log.textContent = "";
+  document.location.reload();
+});
 //callbacks from MDN
 
 function doStep1(init) {
